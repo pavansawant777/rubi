@@ -1,0 +1,115 @@
+<%-include('header.ejs')%>
+<div class="container p-5">
+    <div class="row p-5">
+    <div class="row rounded-4 shadow p-4 bg-light">
+     <div class="w-100 text-center ">
+        <h3>Edit Project</h3>
+     </div>
+     <div class="col-lg-4 mb-3">
+        <form action="/admin/update-project-details/<%-proj._id%>" method="post">
+          <label class="mb-2">Project Title :</label>
+        <input required type="text" class="form-control" name="title" value="<%-proj.title%>"/>
+     </div>
+     
+      <div class="col-lg-4 mb-3">
+       <label class="mb-2">Project Catagory :</label>
+           <select class="form-control" required name="category">
+            <option disabled selected value="">Select Catagory</option>
+            <%for(let i=0;i<cats.length;i++){%>
+                <option <%-(cats[i].category==proj.category)?'selected':''%>><%-cats[i].category%></option>
+            <%}%>
+           </select>
+     </div>
+     <div class="col-lg-4 mb-3">
+        <label class="mb-2">Show Home :</label>
+            <select class="form-control" required name="showHome">
+             
+                <option <%-(proj.showHome==true)?'selected':''%> value="true">Show</option>
+                <option <%-(proj.showHome==false)?'selected':''%> value="false">Hide</option>
+            </select>
+      </div>
+      <div class="col-lg-4 mb-3 ">
+            <label class="mb-2">Client Name :</label>
+            <input type="text" class="form-control" value="<%-proj.client_name%>" required name="client_name">
+        </div>
+        <div class="col-lg-4 mb-3 ">
+            <label class="mb-2">Client Mobile:</label>
+            <input type="number" class="form-control" value="<%-proj.client_mobile%>" required name="client_mobile">
+        </div>
+        <div class="col-lg-4 mb-3 ">
+            <label class="mb-2">Client Email :</label>
+            <input type="email" class="form-control" value="<%-proj.client_email%>" required name="client_email">
+        </div>
+         <div class="col-lg-12 mb-3 ">
+                 <label class="mb-2">Address:</label>
+            <textarea class="form-control" required name="address"><%-proj.address%></textarea>
+        </div>
+         <div class="col-lg-12 mb-3 ">
+                 <label class="mb-2">About Project:</label>
+            <textarea class="form-control" id="editor1" required name="details"><%-proj.details%></textarea>
+        </div>
+        <div class="col-lg-12 mt-2 mb-4 text-center">
+            <button class="btn btn-primary" type="submit">Update &nbsp; <i class="fa fa-upload"></i></button>
+        </form> 
+        </div>
+    </div>
+    <div class="row shadow bg-light mt-5 p-5" style="overflow-x: scroll;">
+        <div class="w-100 text-center mb-5">
+            <h3>Edit Project Images</h3>
+        </div>
+        <div class="col-lg-12 " >
+        <table class="table table-striped">
+            <tr>
+                <th>Srno</th>
+                <th>Image</th>
+                <th>
+                    New Image
+                </th>
+                <th></th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>
+                    <img src="/images/<%-proj.tumbnail%>"  style="width: 120px; height: 80px;">
+                </td>
+                <td>
+                    <form method="post" enctype="multipart/form-data" action="/admin/update-proj-tumbnail/<%-proj._id%>">
+                    <input class="form-control" required type="file" name="img" />
+                </td>
+                <td><button class="btn btn-success btn-xs"><i class="fa fa-upload"></i></button></td>
+                </form>
+            </tr>
+            
+            <%for(let i=0;i<proj.images.length;i++){
+                
+                %>
+<tr>
+    <td><%-i+2%></td>
+       <td>
+                    <img src="/images/<%-proj.images[i]%>"  style="width: 120px; height: 80px;">
+                </td>
+                <td>
+                    <form method="post" enctype="multipart/form-data" action="/admin/update-proj-img/<%-proj._id%>/<%-index++;%>">
+                    <input class="form-control" required type="file" name="img" />
+                </td>
+                <td><button class="btn btn-success btn-xs"><i class="fa fa-upload"></i></button>
+                </form></td>
+</tr>
+                <%   }%>
+        </table>
+        </div>
+    </div>
+    </div>
+</div>
+<script>
+    var editor = CKEDITOR.replace( 'editor1' );
+
+// The "change" event is fired whenever a change is made in the editor.
+editor.on( 'change', function( evt ) {
+    // getData() returns CKEditor's HTML content.
+  console.log( 'This is what you typed ' + evt.editor.getData() + typeof evt.editor.getData() );
+    console.log( 'Total bytes: ' + evt.editor.getData().length );
+  $('#hiddedn input').val(evt.editor.getData());
+});
+</script>
+<%-include('footer.ejs')%>

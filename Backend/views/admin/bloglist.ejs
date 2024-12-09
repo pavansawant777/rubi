@@ -1,0 +1,43 @@
+<%-include('header.ejs')%>
+
+
+<div class="container pt-5">
+    <div class="row p-4">
+         <div class="col-md-12 text-center">
+            <h1>Blog List</h1>
+
+          </div>
+         <%for(let i=0;i<blogs.length;i++){%>
+        <div class="col-md-4 p-4">
+            <div class="row shadow bg-light p-0 ">
+                <div class="col-md-12 p-2">
+                    <a href="/admin/delete-blog/<%-blogs[i]._id%>" class="text-danger float-end"><i class="fa fa-x"></i></a>
+                </div>
+             <div class="col-md-12 p-0">
+               <img src="/images/<%-blogs[i].image%>" style="max-height: 230px; width: 100%; ">
+             </div>
+             <div class="col-md-12 p-2 ">
+              <div class="w-100 mb-2">
+                <font class="float-start" style="font-size: 12px;"><i class="fa fa-user"></i><span>&nbsp;&nbsp;<%-blogs[i].writer%></span></font>
+                <font class="float-end" style="font-size: 12px;"><i class="fa fa-clock"></i><span>&nbsp;&nbsp;<%-blogs[i].passed_time%> ago</span></font>
+              </div><br>
+
+              <h4 class="fw-bold" style="text-align: justify;"><%-blogs[i].title.slice(0,25)%>..</h4>
+              <div class="w-100" style="overflow-y: scroll;">
+                  <p><%-blogs[i].details.slice(0,100)%>...</p><br>
+              </div>
+            
+              <div class="w-100 border-top border-3 p-3">
+            <a href="/admin/view-blog/<%-blogs[i]._id%>" class="btn btn-primary">Read More</a>
+        </div>
+             </div>
+            </div>
+        </div>
+        <%}%>
+
+
+    </div>
+</div>
+
+
+<%-include('footer.ejs')%>

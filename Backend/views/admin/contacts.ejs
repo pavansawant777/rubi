@@ -1,0 +1,40 @@
+<%-include('header.ejs')%>
+<div class="conatiner pt-5">
+    <div class="row m-5 rounded shadow bg-light">
+    <div class="col-md-12 text-center">
+        <h3>Message List</h3>
+    </div>
+    <div class="col-md-12">
+        <table class="table table-striped text-center">
+            <tr>
+                <th></th>
+                <th>SrNo</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Subject</th>
+                <th>Message Date</th>
+                <th>Status</th>
+                
+                
+            </tr>
+            <%for(let i=0;i<contacts.length;i++){%>
+             <tr>
+                <td>  <a href="/admin/view-message/<%-contacts[i]._id%>" class="text-primary"><i class="fa fa-eye"></i></a>
+                    <a href="/admin/delete-message/<%-contacts[i]._id%>" class="text-danger m-1"><i class="fa fa-trash"></i></a>
+                  
+                </td>
+                <td><%-i+1%></td>
+                <td><%-contacts[i].name%></td>
+                <td><%-contacts[i].email%></td>
+                <td><%-contacts[i].subject.slice(0,30)%>..</td>
+                <td><%-contacts[i].date.toString().slice(4,15)%></td>
+                <td><%-(contacts[i].reply=='none')?'Not replied':'Replied'%></td>
+
+             </tr>
+
+                <%}%>
+        </table>
+    </div>
+    </div>
+</div>
+<%-include('footer.ejs')%>

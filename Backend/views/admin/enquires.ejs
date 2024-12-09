@@ -1,0 +1,39 @@
+<%-include('header.ejs')%>
+<div class="container p-5">
+    <div class="row p-5 ">
+<div class="w-100 ">
+    <h2>List Of <%-status%> Enquires</h2>
+</div>
+<div class="col-12">
+    
+    <table class="table mt-5 table-striped table-bordered">
+        <tr>
+            <th></th>
+            <th>Srno</th>
+            <th>Name</th>
+               <th>Work Tyoe</th>
+            <th>Mobile</th>
+         
+            <th>Date</th>
+            <td>Message</td>
+        </tr>
+        <%for(let i=0;i<enqs.length;i++){%>
+            <tr>
+                <td>
+                    <a href="/admin/view-enquiry/<%-enqs[i]._id%>" class="text-primary text-decoration-none"><i class="fa fa-eye"></i></a>
+                </td>
+                <td><%-i+1%></td>
+                <td><%-enqs[i].name%></td>
+                   <td><%-enqs[i].workType%></td>
+                <td><%-enqs[i].contactNumber%></td>
+                <td><%-enqs[i].date.toString().slice(4,15)%></td>
+                <td><a href="https://wa.me/<%-enqs[i].contactNumber%>?text=hello" class="btn btn-success btn-sm "><i class="fa fa-whatsapp"></i></a>
+                <a href="/admin/delete-enq/<%-enqs[i]._id%>" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
+                </td>
+            </tr>
+            <%}%>
+    </table>
+</div>
+    </div>
+</div>
+<%-include('footer.ejs')%>

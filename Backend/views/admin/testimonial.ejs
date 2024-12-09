@@ -1,0 +1,81 @@
+<%-include('header.ejs')%>
+<div class="conatiner ">
+    <div class="row bg-light rounded shadow-lg m-5 p-4">
+        <div class="col-md-12 mb-3 text-center">
+         <h1>Add Testimonial</h1>
+        </div>
+        <div class="col-md-4">
+            <label class="mb-2">
+                 Name :
+            </label>
+            <form action="/admin/add-testimonial" method="post" enctype="multipart/form-data">
+            <input type="text" class="form-control" required name="name">
+        </div>
+        <div class="col-md-4">
+            <label class="mb-2">
+                Profile Image :
+            </label>
+            <input type="file" class="form-control" name="img">
+        </div>
+        <div class="col-md-4">
+            <label class="mb-2">
+               Review Stars:
+            </label>
+            <input type="number" max="5" min="1" class="form-control" name="stars">
+        </div>
+        <div class="col-md-12 mt-3">
+            <label class="mb-2">Details :</label>
+            <textarea class="form-control" id="" name="details" required ></textarea>
+        </div>
+        <div class="col-md-12 text-center mt-4">
+            <button type="submit" class="btn btn-primary">Save</button>
+        </form>
+        </div>
+    </div>
+
+    <div class="row mt-5 m-5 p-3 bg-light shadow rounded">
+     <div class="col-md-12">
+        <table class="table  table-striped">
+            <tr>
+                <th style="width: 5%;"></th>
+                <th class="p-0" style="width: 5%;">Sr.No</th>
+                <th class="p-0" style="width: 5%;">Profile</th>
+                <th class="p-0" style="width: 15%;">Writer</th>
+               <th class="p-0" style="width: 15%;">Stars</th>
+                <th class="p-0" style="width: 25%;">details</th>
+                <th class="p-0"  style="width: 10%;">Update</th>
+                
+            </tr>
+            <%for(let i=0;i<quotes.length;i++){%>
+               <tr>
+                <td class="p-0"><a href="/admin/delete-quote/<%-quotes[i]._id%>" class="text-danger"><i class="fa fa-trash"></i></a></td>
+                <td class="p-0"><%-i+1%></td>
+                <td class="p-0"><img src="/images/<%-quotes[i].image%>" style="width: 50px; height: 50px; border-radius: 50%;"></td>
+                <form action="/admin/update-testimonial/<%-quotes[i]._id%>" method="post">
+                <td class="p-0"> <input type="text" class="form-control" value="<%-quotes[i].name%>" name="name" required></td>  
+                <td class="p-0"><input type="number" min="1" max="5" class="form-control" value="<%-quotes[i].stars%>" name="stars" required></td>  
+                <td class="p-0"> <textarea  name="details" required><%=quotes[i].details%></textarea></td>
+                <td class="p-0"><button type="submit" class="btn btn-primary btn-sm">Update<i class="fas fa-upgrade"></i></button></td>
+            </form>
+            </tr>
+                <%}%>
+        </table>
+     </div>
+
+
+    </div>
+</div>
+
+<script>
+        var editor = CKEDITOR.replace( 'editor4' );
+
+// The "change" event is fired whenever a change is made in the editor.
+editor.on( 'change', function( evt ) {
+    // getData() returns CKEditor's HTML content.
+  console.log( 'This is what you typed ' + evt.editor.getData() + typeof evt.editor.getData() );
+    console.log( 'Total bytes: ' + evt.editor.getData().length );
+  $('#hiddedn input').val(evt.editor.getData());
+});
+</script>
+
+<%-include('footer.ejs')%>

@@ -1,0 +1,140 @@
+<%-include('header.ejs')%>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<div class="container p-5">
+    <div class="row p-5 ">
+        <div class="row p-4 bg-light rounded shadow">
+            <div class="col-lg-12">
+                <span class="float-end"><a href="/admin/edit-project/<%-proj._id%>" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i></a></span>
+            </div>
+            <div class="col-lg-5">
+                <div class="row ">
+                  <div class="col-12 p-1 mb-2">
+      <img src="/images/<%-proj.tumbnail%>" id="img-box" style="height: 260px;" class="w-100 rounded"/>
+                  </div>
+                  <%for(let i=0;i<proj.images.length;i++){%>
+                  <div class="col-3 p-1 ">
+                      <img  onmouseleave="removeImg(this)" onmouseenter="setImg(this)" src="/images/<%-proj.images[i]%>" style="height: 80px;cursor: pointer;"  class="w-100 rounded"/>
+          
+                    </div>
+                    <%}%>
+                  
+                </div>
+              </div>
+              <div class="col-lg-7">
+                <div class="row">
+                    <div class="col-12">
+                        <button class="btn btn-dark rounded-pill btn-sm mt-4 mt-lg-0"><%-proj.category%></button>
+                        <h2 class="mt-3"><%-proj.title%></h2>
+                        <p><%-proj.details%></p>
+                    <h4>Client Information :</h4>
+                        <div class="row" >
+                        <div class="col-6 mb-2">
+                                   <span class="text-start"><i class="fa fa-user"></i>&nbsp;&nbsp;<%-proj.client_name%></span>
+                        </div>
+                        <div class="col-6 mb-2">
+                            <span class="text-start"><i class="fa-regular fa-calendar-days"></i>&nbsp;&nbsp;<%-proj.date.toString().slice(4,15)%></span>
+                 </div>
+                        <div class="col-6 mb-2">
+                            <span class="text-start"><i class="fa fa-phone"></i>&nbsp;&nbsp;<%-proj.client_mobile%></span>
+                 </div>
+                 <div class="col-lg-6 mb-2 " >
+                    <span class="text-start"><i class="fa fa-envelope"></i>&nbsp;&nbsp;<%-proj.client_email%></span>
+         </div>
+         <div class="col-12 mb-2">
+            <span class="text-start"><i class="fa fa-location-dot"></i>&nbsp;&nbsp;<%-proj.address%></span>
+ </div>
+ <div class="col-12 mb-2">
+    <span class="text-start"><i class="fa fa-star"></i>&nbsp;&nbsp;<%-(proj.isRated)? proj.rating+'stars':'not rated yed'%> </span>
+</div>
+                    </div>
+                    </div>
+                </div>
+              </div>
+        </div>
+        <div class="row p-4 bg-light rounded shadow mt-5" style="overflow-x: scroll;">
+            <div class="col-12 ">
+                <h2>Project feebacks</h2>
+            </div>
+            <%if(fb==null){%>
+            <div class="alert alert-warning text-warning">
+                <h4><i class="fa fa-warning"></i>&nbsp;&nbsp; No pending feeback for this project</h4>
+            </div>
+            <%}else{%>
+                <table class="table text-center table-striped">
+                    <tr><th>sr.no</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Mobile</th>
+                    <th>Rating Stars</th>
+                    <th>Date</th>
+                    <th></th>
+
+                    </tr>
+                <tr><td>
+                    1
+                </td>
+            <td><%-fb.name%></td>
+            <td><%-fb.email%></td>
+             <td><%-fb.mobile%></td>
+              <td><%-fb.rating%></td>
+               <td><%-fb.date.toString().slice(0,10)%></td>
+               <td>
+                <%if(fb.status!='pending'){%>
+                    <button class="btn btn-primary" disabled>Accepted</button>
+                    <%}
+                    else{%>
+                         <a class="btn btn-primary" href="/admin/accept-feedback-req/<%-fb._id%>/<%-proj._id%>" >Accept</a>
+                        <%}%>
+               
+                </td>
+            </tr>
+                </table>
+                <%}%>
+        </div>
+       
+    </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+    function setImg(ele){
+        ele.style.outlineOffset="2px";
+        ele.style.outline="2px solid blue";
+        document.getElementById('img-box').setAttribute("src",ele.src);
+
+
+    }
+    function removeImg(ele){
+        document.getElementById('img-box').setAttribute("src",'/images/<%-proj.tumbnail%>');
+        ele.style.outlineOffset="0px";
+        ele.style.outline="0px";
+    }
+</script>
+<script>
+   
+    $('.owl-carousel').owlCarousel({
+    loop:true,
+    margin:10,
+    nav:true,
+    responsive:{
+        0:{
+            items:1
+        },
+        600:{
+            items:1
+        },
+        1000:{
+            items:1
+        }
+    }
+})
+</script>
+<script>
+    function back(){
+        location.href='http://localhost:1000/admin/project-list';
+    }
+</script>
+
+<%-include('footer.ejs')%>

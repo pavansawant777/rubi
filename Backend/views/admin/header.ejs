@@ -1,0 +1,324 @@
+<html lang="en">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Ruby Furnitures</title>
+    <meta
+      content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
+      name="viewport"
+    />
+  
+    <script type="text/javascript" src="https://cdn.ckeditor.com/4.5.11/standard/ckeditor.js"></script>
+
+
+      
+    <!-- Fonts and icons -->
+    <script src="/admin/js/plugin/webfont/webfont.min.js"></script>
+    
+    <!-- CSS Files -->
+    <script src="https://kit.fontawesome.com/e686ed4c50.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/admin/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/admin/css/plugins.min.css" />
+    <link rel="stylesheet" href="/admin/css/kaiadmin.min.css" />
+
+    <!-- CSS Just for demo purpose, don't include it in your project -->
+    <link rel="stylesheet" href="/admin/css/demo.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <style>
+    .row{
+      overflow-x: scroll;
+    }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <!-- Sidebar -->
+      <div class="sidebar" data-background-color="dark">
+        <div class="sidebar-logo">
+          <!-- Logo Header -->
+          <div class="logo-header" data-background-color="dark">
+            <a href="/admin/company-details" class="logo me-3">
+              <img
+                src="http://localhost:1000/logo.png"
+                alt="navbar brand"
+                class="navbar-brand"
+                height=""
+                style="width: 90%;height: 180px;"
+              />
+            </a>
+            <div class="nav-toggle">
+              <button class="btn btn-toggle toggle-sidebar">
+                <i class="gg-menu-right"></i>
+              </button>
+              <button class="btn btn-toggle sidenav-toggler">
+                <i class="gg-menu-left"></i>
+              </button>
+            </div>
+
+            <button class="topbar-toggler more">
+              <i class="gg-more-vertical-alt"></i>
+            </button>
+          </div>
+          <!-- End Logo Header -->
+        </div>
+        <div class="sidebar-wrapper scrollbar scrollbar-inner">
+          <div class="sidebar-content">
+            <ul class="nav nav-secondary">
+          
+              <li class="nav-item ">
+                <a href="/admin/company-details">
+                  <i class="fas fa-industry"></i>
+                  <p>Company</p>
+                  
+                </a>
+                
+              </li>
+
+              
+              
+              <li class="nav-item">
+                <a data-bs-toggle="collapse" href="#gallery">
+                  <i class="fa-solid fa-image"></i>
+                  <p>Gallery</p>
+                  <span class="caret"></span>
+                </a>
+                <div class="collapse" id="gallery">
+                  <ul class="nav nav-collapse">
+                  
+                    <li>
+                      <a href="/admin/photos">
+                        <span class="sub-item">Photos</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="/admin/videos">
+                        <span class="sub-item">Videos</span>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+              
+
+              <li class="nav-item">
+                <a data-bs-toggle="collapse" href="#messages">
+                  <i class="fa-solid fa-envelope"></i>
+                  <p>Enquiry</p>
+                  <span class="caret"></span>
+                </a>
+                <div class="collapse" id="messages">
+                  <ul class="nav nav-collapse">
+                  
+                    <li>
+                      <a href="/admin/enquries">
+                        <span class="sub-item">Enquiry List</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="/admin/accepted-enquiries">
+                        <span class="sub-item">Accepted Enquiry List</span>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+
+              <li class="nav-item">
+                <a data-bs-toggle="collapse" href="#tables">
+                  <i class="fas fa-building"></i>
+                  <p>Project</p>
+                  <span class="caret"></span>
+                </a>
+                <div class="collapse" id="tables">
+                  <ul class="nav nav-collapse">
+                   
+                    <li>
+                      <a href="/admin/add-project">
+                        <span class="sub-item">Add Project</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="/admin/project-list">
+                        <span class="sub-item">Project List</span>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+         
+              <li class="nav-item">
+                <a data-bs-toggle="collapse" href="#service">
+                  
+                  <i class="fa-solid fa-helmet-safety"></i>
+                  <p>Services</p>
+                  <span class="caret"></span>
+                </a>
+                <div class="collapse" id="service">
+                  <ul class="nav nav-collapse">
+                    <li>
+                      <a href="/admin/add-service">
+                        <span class="sub-item">Add Service</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="/admin/services-list">
+                        <span class="sub-item">Service List</span>
+                      </a>
+                    </li>
+                    
+                  </ul>
+                </div>
+              </li>
+            
+            
+           
+         
+              <li class="nav-item">
+                <a data-bs-toggle="collapse" href="#blog">
+                  <i class="fa-regular fa-pen-to-square"></i>
+                  <p>Blog</p>
+                  <span class="caret"></span>
+                </a>
+                <div class="collapse" id="blog">
+                  <ul class="nav nav-collapse">
+                    <li>
+                      <a href="/admin/blog-cat">
+                        <span class="sub-item">Category</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="/admin/write-blog">
+                        <span class="sub-item">Write blog</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="/admin/blog-list">
+                        <span class="sub-item">Blogs</span>
+                      </a>
+                    </li>
+                    
+                    
+                  </ul>
+                </div>
+              </li>
+          <li class="nav-item">
+                <a data-bs-toggle="collapse" href="#faq">
+                  <i class="fa-regular fa-question"></i>
+                  <p>FAQ</p>
+                  <span class="caret"></span>
+                </a>
+                <div class="collapse" id="faq">
+                  <ul class="nav nav-collapse">
+                    <li>
+                      <a href="/admin/add-faq">
+                        <span class="sub-item">Add FAQ</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="/admin/faqs">
+                        <span class="sub-item">FAQ's</span>
+                      </a>
+                    </li>
+                    
+                    
+                  </ul>
+                </div>
+              </li>
+              <li class="nav-item">
+                <a data-bs-toggle="collapse" href="#cat">
+                  <i class="fa-solid fa-list"></i>
+                  <p>category</p>
+                  <span class="caret"></span>
+                </a>
+                <div class="collapse" id="cat">
+                  <ul class="nav nav-collapse">
+                    <li>
+                      <a href="/admin/main-catagory">
+                        <span class="sub-item">Main Catagroies</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="/admin/catagory">
+                        <span class="sub-item">Sub Catagroies</span>
+                      </a>
+                    </li>
+                    
+                    
+                  </ul>
+                </div>
+              </li>
+              <li class="nav-item ">
+                <a href="/admin/testimonial">
+                  <i class="fas fa-comment"></i>
+                  <p>Testimonial</p>
+                  
+                </a>
+                
+              </li>
+           <li class="nav-item ">
+                <a href="/admin/certificate">
+                  <i class="far fa-file"></i>
+                  <p>Certificate</p>
+                  
+                </a>
+                
+              </li>
+              <li class="nav-item ">
+                <a href="/admin/slider">
+                  <i class="far fa-image"></i>
+                  <p>Slider</p>
+                  
+                </a>
+                
+              </li>
+              <li class="nav-item ">
+                <a href="/admin/history">
+                  <i class="far fa-clock"></i>
+                  <p>History</p>
+                  
+                </a>
+                
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="main-panel">
+         <div class="main-header">
+          <div class="main-header-logo">
+            <!-- Logo Header -->
+            <div class="logo-header" data-background-color="dark">
+              <a href="index.html" class="logo">
+                <img
+                  src="assets/img/kaiadmin/logo_light.svg"
+                  alt="navbar brand"
+                  class="navbar-brand"
+                  height="20"
+                />
+              </a>
+              <div class="nav-toggle">
+                <button class="btn btn-toggle toggle-sidebar">
+                  <i class="gg-menu-right"></i>
+                </button>
+                <button class="btn btn-toggle sidenav-toggler">
+                  <i class="gg-menu-left"></i>
+                </button>
+              </div>
+              <button class="topbar-toggler more">
+                <i class="gg-more-vertical-alt"></i>
+              </button>
+            </div>
+            <!-- End Logo Header -->
+          </div>
+          <!-- Navbar Header -->
+          <nav
+            class="navbar navbar-header navbar-header-transparent navbar-expand-lg border-bottom"
+          >
+            <div class="container-fluid">
+            
+
+              
+            </div>
+          </nav>
+          <!-- End Navbar -->
+        </div>
+        

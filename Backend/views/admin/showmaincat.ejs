@@ -1,0 +1,43 @@
+<%-include('header.ejs')%>
+<div class="container">
+    <div class="row justify-content-center align-item-center">
+        <div class="col-md-7">
+            <h2 class="text-center mt-5">Sub Categories of <%-mcat.name%></h2>
+            <table class="mt-3 table table-bordered table-bordered p-5">
+                <tr>
+                    <th>Srno</th>
+                    <th>Sub Categories</th>
+                    <th>Update</th>
+                    
+
+                </tr>
+                <%for(let i=0;i<sub.length;i++){%>
+                    <tr>
+                        <td><%=i+1%></td>
+                        <td>
+                            <%-sub[i].category%>
+                        </td>
+                        <td>
+                            <form method="post" action="/admin/update-sub-cat/<%-mcat._id%>/<%-i%>">
+                                <div class="input-group">
+
+                               
+                               <select class="form-control" required name="categories">
+                        <option value="" selected disabled>select category</option>
+                        <%for(let c of cat){%>
+                            
+                             <option  value="<%=c._id%>" ><%-c.category%></option>
+                            <%}%>
+                    </select>
+                    <button class="btn btn-primary" type="submit"><i class="fa fa-upload"></i></button>
+                </div>
+                </form>
+                            </td>
+                           
+                    </tr>
+                    <%}%>
+            </table>
+        </div>
+    </div>
+</div>
+<%-include('footer.ejs')%>

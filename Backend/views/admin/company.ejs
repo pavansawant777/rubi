@@ -1,0 +1,63 @@
+<%-include('header.ejs')%>
+<div class="container  ">
+     <div class="row m-5  bg-light shadow-lg rounded p-3">
+        <div class="col-md-12 text-center  mb-3 ">
+            <h1>Enter Company Details</h1>
+        </div>
+        <div class="col-md-4">
+            <form action="/admin/save-company-details" method="post">
+            <label class="mb-1">Comapny Name :</label>
+            <input type="text" class="form-control" name="name" value="<%-company.name%>" required>
+        </div>
+        <div class="col-md-4">
+            <label class="mb-1">Comapny Contact No. :</label>
+            <input type="number" class="form-control" name="mobile" value="<%-company.mobile%>" required>
+        </div>
+        <div class="col-md-4">
+            <label class="mb-1">Comapny Email :</label>
+            <input type="email" class="form-control" name="email" value="<%-company.email%>" required>
+        </div>
+        <div class="col-md-3 mt-3">
+            <label class="mb-1">Instagram Link :</label>
+            <input type="url" class="form-control" name="instagram" value="<%-company.instagram%>" required>
+        </div>
+        <div class="col-md-3 mt-3">
+            <label class="mb-1">Whatsapp No. :</label>
+            <input type="number" class="form-control" name="whatsapp" value="<%-company.whatsapp%>" required>
+        </div>
+        <div class="col-md-3 mt-3">
+            <label class="mb-1">Facebook Link :</label>
+            <input type="url" class="form-control" name="facebook" value="<%-company.facebook%>" required>
+        </div>
+        <div class="col-md-3 mt-3">
+            <label class="mb-1">Youtube Link :</label>
+            <input type="url" class="form-control" name="youtube" value="<%-company.youtube%>" required>
+        </div>
+
+         <div class="col-md-12 mt-3">
+            <label class="mb-2">About Comapny :</label >
+                <textarea  name="about" class="form-control" rows="6"><%-company.about%></textarea>
+        </div> 
+        <div class="col-md-12 mt-3">
+            <label class="mb-2">Comapny Address :</label>
+            <textarea class="form-control" required name="address"><%-company.address%></textarea>
+        </div>
+        <div class="col-md-12 mt-5 text-center">
+            <button type="submit" class="btn btn-primary">Save</button>
+        </form>
+       
+        </div>
+     </div>
+</div>
+<script>
+    var editor = CKEDITOR.replace( 'editor1' );
+
+// The "change" event is fired whenever a change is made in the editor.
+editor.on( 'change', function( evt ) {
+    // getData() returns CKEditor's HTML content.
+  console.log( 'This is what you typed ' + evt.editor.getData() + typeof evt.editor.getData() );
+    console.log( 'Total bytes: ' + evt.editor.getData().length );
+  $('#hiddedn input').val(evt.editor.getData());
+});
+</script>
+<%-include('footer.ejs')%>

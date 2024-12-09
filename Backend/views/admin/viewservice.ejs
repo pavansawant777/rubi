@@ -1,0 +1,45 @@
+<%-include('header.ejs')%>
+<div class="container pt-5">
+    <div class="row m-5 rounded shadow bg-light p-4">
+        <div class="col-md-12 text-center mb-4">
+            <h1>Service Details</h1>
+        </div>
+       
+        <div class="col-md-4">
+            <form action="/admin/update-service/<%-service._id%>" method="post" enctype="multipart/form-data">
+            <label class="mb-3">
+                
+                Service Title* :
+            </label>
+            
+            <input type="text" class="form-control" required name="title" value="<%-service.title%>">
+        </div>
+      
+        <div class="col-md-4 ">
+            <label class="mb-3">
+                Service Icon URL:
+            </label>
+            <textarea type="text" class="form-control" required name="ico"  ><%-service.ico%></textarea>
+        </div>
+         <div class="col-md-4 ">
+            <label class="mb-3">
+                Show Home:
+            </label>
+            <select class="form-control" required name="atHome">
+                <option <%-(service.atHome==true)?'selected':''%> value="true">Show</option>
+                   <option <%-(service.atHome==false)?'selected':''%> value="false">Hide</option>
+                
+            </select>
+        </div>
+       
+       
+        <div class="col-md-12 text-center mt-4">
+            <button type="submit" class="btn btn-primary">Update</button> 
+            
+        </form>
+        <a href="/admin/delete-service/<%-service._id%>" class="btn btn-danger ms-3">Delete</a>
+        </div>
+
+    </div>
+</div>
+<%-include('footer.ejs')%>

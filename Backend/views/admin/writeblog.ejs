@@ -1,0 +1,67 @@
+<%-include('header.ejs')%>
+
+<div class="conatiner pt-5">
+    <div class="row m-5 p-4 rounded shadow bg-light">
+        <div class="col-md-12 text-center mb-4">
+            <h2>Write a blog</h2>
+      
+        </div>
+        <div class="col-lg-3 ">
+            <form action="/admin/add-blog" method="post" enctype="multipart/form-data">
+            <label class="mb-2">Blog Heading :</label>
+            <input  type="text" class="form-control" required name="title" >
+        </div>
+        <div class="col-lg-3 ">
+            <label class="mb-2">Blog Image :</label>
+            <input  type="file" class="form-control" required name="image" accept="image/*">
+        </div>
+        <div class="col-lg-3 ">
+            <label class="mb-2">Blog Label :</label>
+           
+            <select class="form-control" required name="category">
+                <option disabled value="" selected>Select Blog Label</option>
+                <%for(let i=0;i<cats.length;i++){%>
+                    <option><%-cats[i].category%></option>
+                    <%}%>
+            </select>
+        </div>
+         <div class="col-lg-3 ">
+            <label class="mb-2">Blog Writer :</label>
+            <input  type="text" class="form-control" required name="writer" >
+        </div>
+      
+        <div class="col-md-12 mt-3 ">
+            <label class="mb-2">Blog Details :</label>
+          
+            <textarea id="editor2" name="details">&lt;p&gt;Initial value.&lt;/p&gt;</textarea>
+
+
+
+        
+
+           
+
+
+
+        </div>
+        <div class="col-md-12 mt-5 text-center ">
+         <button type="submit" class="btn btn-primary">Add Blog</button>
+        </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    var editor = CKEDITOR.replace( 'editor2' );
+
+// The "change" event is fired whenever a change is made in the editor.
+editor.on( 'change', function( evt ) {
+    // getData() returns CKEditor's HTML content.
+  console.log( 'This is what you typed ' + evt.editor.getData() + typeof evt.editor.getData() );
+    console.log( 'Total bytes: ' + evt.editor.getData().length );
+  $('#hiddedn input').val(evt.editor.getData());
+});
+</script>
+
+
+<%-include('footer.ejs')%>

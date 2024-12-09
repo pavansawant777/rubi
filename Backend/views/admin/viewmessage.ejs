@@ -1,0 +1,54 @@
+<%-include('header.ejs')%>
+<div class="conatiner pt-5">
+    <div class="row m-5 rounded shadow p-4 bg-light">
+        <div class="col-md-12 text-center">
+            <h2>Message Details</h2>
+        </div>
+        <div class="col-md-12 mt-4">
+            <h3 style="text-transform: uppercase;"><%-contact.name%></h3>
+            <font class="mb-2"><i class="fa fa-envelope"></i>&nbsp;&nbsp;<%-contact.email%></font><br>
+            <font class="mt-2"><b>Date :</b>&nbsp;&nbsp;<%-contact.date.toString().slice(4,15)%></font><br><br>
+            <font><b>Subject :</b><%-contact.subject%>.</font><br><br>
+            <p style="text-align: justify; text-indent: 20px;"><%-contact.message%>.</p><br><br>
+            <%if(contact.reply!='none'){%>
+                <label class="fw-bold mb-2 float-start">Reply :</label><font class="float-end"><b>Reply Date :</b><%-contact.reply_date.toString().slice(4,15)%></font><br>
+                <p style="text-align: justify; text-indent: 20px;"><%-contact.reply%>.</p>
+                <%}%>
+        </div>
+        <%if(contact.reply=='none'){%>
+        <div class="col-md-12 text-end">
+            <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <i class="fa-solid fa-reply"></i>&nbsp; Reply
+              </button>
+              
+              <!-- Modal -->
+              <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h1 class="modal-title fs-5" id="exampleModalLabel">Reply to <%-contact.name%></h1>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+
+                      <font class="float-start" style="line-height: 5px;"><b>To</b> :<%-contact.email%></font><br>
+                      <font class="float-start"><b>From</b> :<%-company.email%></font><br>
+                      <form method="post" action="/admin/send-reply/<%-contact._id%>">
+                      <label class="fw-bold mb-2 float-start mt-3">Subject :</label>
+                      <input type="text" name="sub" class="form-control" required>
+                      <label class="fw-bold mb-2 float-start mt-3">Message :</label>
+                      <textarea class="form-control" name="reply" required rows="6"></textarea>
+                    </div>
+                    <div class="modal-footer">
+                      
+                      <button type="submit" class="btn btn-primary">Send</button>
+                    </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+        </div>
+        <%}%>
+    </div>
+</div>
+<%-include('footer.ejs')%>

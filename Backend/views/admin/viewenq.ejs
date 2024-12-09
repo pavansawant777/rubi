@@ -1,0 +1,24 @@
+<%-include('header.ejs')%>
+<div class="container-fluid p-5">
+    <div class="row justify-content-center align-items-center p-5">
+<div class="col-6 p-3 rounded-4 shadow">
+    <h2 class="text-center">Enquiry Details</h2>
+    <pre class="mt-5">
+    <b class="fs-5"><%-enq.name%></b>
+    <font><i class="fa fa-whatsapp"></i>&nbsp;<%-enq.contactNumber%></font>
+
+    <b class="fs-6"><%-enq.workType%></b>
+         <p>   <i class="fa fa-location-dot"></i>&nbsp;<%-enq.address%></p>
+</pre>
+<a class="btn btn-success rounded-pill" href="https://wa.me/<%-enq.contactNumber%>?text=hello"><i class="fa fa-whatsapp"></i>&nbsp;Message</a> 
+<%if(enq.status=='pending'){%>
+    <a href="/admin/accept-enq/<%-enq._id%>" class="btn btn-primary rounded-pill"><i class="fa fa-check"></i>&nbsp;Accept work</a>
+<%}%>
+
+                <a href="/admin/delete-enq/<%-enq._id%>" class="btn btn-danger rounded-pill"><i class="fa fa-trash"></i></a>
+
+</div>
+
+    </div>
+</div>
+<%-include('footer.ejs')%>

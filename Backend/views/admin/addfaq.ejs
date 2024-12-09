@@ -1,0 +1,16 @@
+<%-include('header.ejs')%>
+<div class="container">
+    <div class="row p-5 justify-content-center align-item-center">
+        <div class="col-md-5 p-3 bg-light rounded shadow">
+            <h3 class="text-center">Add FAQ</h3>
+            <form method="post" action="/admin/save-faq">
+                <label class="mb-2">Question :</label>
+                <input class="form-control mb-3" name="question" required />
+                   <label class="mb-2">Answer :</label>
+                <textarea class="form-control" required name="answer" rows="5"></textarea>
+                <button class="btn btn-primary mt-5 w-100">Save</button>
+            </form>
+        </div>
+    </div>
+</div>
+<%-include('footer.ejs')%>

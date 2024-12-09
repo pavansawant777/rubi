@@ -1,0 +1,37 @@
+<%-include('header.ejs')%>
+<div class="container pt-5">
+    <div class="row m-5 rounded shadow bg-light">
+        <div class="col-md-12 p-4">
+          <h2 class="mb-4" style="text-transform: capitalize;"><%-status%> Quotation list</h2>
+          <%if(quote.length!=0){%>
+            <table class="table text-center table-striped">
+             <tr>
+                <th></th>
+                <th>SrNO</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Mobile</th>
+                <th>Application Date</th>
+                <th></th>
+             </tr>
+             <%for(let i=0;i<quote.length;i++){%>
+             <tr>
+           <td><a href="/admin/view-quote-details/<%-quote[i]._id%>" class="text-primary"><i class="fa fa-eye"></i></a></td>
+           <td><%-i+1%></td>
+           <td style="text-transform: uppercase;"><%-quote[i].name%></td>
+           <td><%-quote[i].email%></td>
+           <td><%-quote[i].mobile%></td>
+           <td><%-quote[i].date.toString().slice(4,15)%></td>
+           <td><a href="/admin/delete-quote/<%-quote[i]._id%>/<%-quote[i].status%>" class="text-danger"><i class="fa fa-trash"></i></a></td>
+             </tr>
+             <%}%>
+            </table>
+            <%}else{%>
+              <div class="w-100 text-center alert alert-warning ">
+                <h6 class="text-warning">There is no <%-status%> quotation.</h6>
+              </div>
+              <%}%>
+        </div>
+    </div>
+</div>
+<%-include('footer.ejs')%>

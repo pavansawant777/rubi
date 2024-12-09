@@ -1,0 +1,42 @@
+<%-include('header.ejs')%>
+<div class="conatiner pt-5 " style="overflow-x: hidden;">
+    <div class="row p-5">
+        <%for(let i=0;i<member.length;i++){%>
+        <div class="col-md-4 ">
+            <div class="row rounded p-3 m-1 shadow">
+                <div class="col-md-12  p-0">
+                    
+                    
+                    <div class="dropdown float-end p-0  m-0" >
+                        <button class="btn  border-0 p-0 me-0 fs-6 float-end" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fa-solid fa-ellipsis-vertical"></i>
+                        </button>
+                        <ul class="dropdown-menu p-3">
+                            <li><a href="/admin/view-member/<%-member[i]._id%>" class=" dropdown-item "><i class="fa fa-edit"></i>&nbsp;&nbsp;&nbsp;<span class="">Edit Details</span></a></li>
+
+                          <li><a href="/admin/delete-member/<%-member[i]._id%>" class="dropdown-item"><i class="fa fa-trash"></i>&nbsp;&nbsp;&nbsp;<span class="">Delete Member</span></a></li>
+                          
+                        </ul>
+                      </div>
+                     
+                </div>
+             <div class="col-md-12 text-center">
+                <img src="/images/<%-member[i].image%>" style="width: 140px; height: 140px; border-radius: 50%;"><br><br>
+                <h6 style="text-transform: uppercase;" class="fw-bolder"><%-member[i].name%></h6>
+                <font style="font-style: italic;"><%-member[i].designation%></font>
+              
+                <div class="mt-3">
+                    <label class="mb-3">Social Media :</label><br>
+                    <a href="<%-member[i].instagram%>"class="p-1 text-dark fs-5" ><i class="fa fa-instagram"></i></a>
+                    <a href="<%-member[i].whatsapp%>"class="p-1 text-dark fs-5" ><i class="fa fa-whatsapp"></i></a>
+                    <a href="<%-member[i].facebook%>"class="p-1 text-dark fs-5" ><i class="fa fa-facebook"></i></a>
+                  
+                </div>
+             </div>
+            </div>
+        </div>
+        <%}%>
+
+    </div>
+</div>
+<%-include('footer.ejs')%>

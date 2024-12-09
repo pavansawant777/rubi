@@ -1,0 +1,51 @@
+<%-include('header.ejs')%>
+<% let bg="";
+let ico="";
+if(quote.status=='pending'){
+   bg="text-warning";
+   ico="fa-solid fa-circle-exclamation";
+}
+else if(quote.status=='accepted'){
+bg="text-success"; 
+ico="fa-solid fa-check";
+}
+else if(quote.status=='rejected'){
+   ico="fa-solid fa-x";
+   bg="text-danger";
+}%>
+<div class="container pt-5">
+    <div class="row m-5 rounded shadow p-3 bg-light">
+        <div class="col-md-12 text-center">
+            <h3 class="">Quotation Details</h3>              
+
+        </div>
+        <div class="col-md-12 mt-5 ">
+            <b class="float-start"><h5 style="text-transform: uppercase;" class="mb-3"><%-quote.name%></h5></b> <span class="mt-2 float-end <%-bg%>" ><i class="<%-ico%>"></i>&nbsp;&nbsp;<span style="text-transform: capitalize;"><%-quote.status%></span></span>  <br><br>
+       <span class="float-start "><i class="fa fa-envelope"></i>&nbsp;&nbsp;<span><%-quote.email%></span></span> 
+       <span class="float-end ">Application date :&nbsp;&nbsp;<span> <%-quote.date.toString().slice(4,15)%></span></span>
+
+       <br><br>
+       <span class="float-start "><i class="fa fa-phone"></i>&nbsp;&nbsp;<span>+91 <%-quote.mobile%></span></span>  
+       <%if(quote.status=='rejected'){%>
+       <span class="float-end ">Rejected date :&nbsp;&nbsp;<span> <%-quote.reject_date.toString().slice(4,15)%></span></span>
+          <%}%>
+          <%if(quote.status=='accepted'){%>
+            <span class="float-end ">Accept date :&nbsp;&nbsp;<span> <%-quote.accept_date.toString().slice(4,15)%></span></span>
+               <%}%>
+       <br><br>
+        
+       <p style="text-align: justify;" class="mt-3">
+    <%-quote.message%>
+    </p>
+       
+    
+    </div>
+    <%if(quote.status=='pending'){%>
+    <div class="col-md-12 text-center mt-4">
+        <a href="/admin/change-quote-status/<%-quote._id%>/accepted" class="btn btn-success">Accept</a>
+        <a href="/admin/change-quote-status/<%-quote._id%>/rejected" class="btn btn-danger ms-2">Reject</a>
+    </div>
+    <%}%>
+    </div>
+</div>
+<%-include('footer.ejs')%>

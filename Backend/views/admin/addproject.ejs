@@ -1,0 +1,85 @@
+<%-include('header.ejs')%>
+<div class="conatiner pt-5">
+    <div class="row m-5 p-4 bg-light rounded shadow">
+        <div class="col-md-12 mb-5 text-center">
+         <h1>Enter Project Details</h1>
+        </div>
+        <div class="col-md-4">
+            <form action="/admin/save-project" method="post" enctype="multipart/form-data">
+            <label class="mb-2">Project Title :</label>
+            <input type="text" class="form-control" required name="title">
+        </div>
+        <div class="col-md-4">
+            <label class="mb-2">Project Date :</label>
+            <input type="date" class="form-control" required name="date">
+        </div>
+        <div class="col-md-4">
+            <label class="mb-2">Project Catagory :</label>
+           <select class="form-control" required name="category">
+            <option disabled selected value="">Select Catagory</option>
+            <%for(let i=0;i<cats.length;i++){%>
+                <option><%-cats[i].category%></option>
+            <%}%>
+           </select>
+        </div>
+        <div class="col-md-3 mt-3">
+            <label class="mb-2">Client Name :</label>
+            <input type="text" class="form-control" required name="client_name">
+        </div>
+        <div class="col-md-3 mt-3">
+            <label class="mb-2">Client Mobile:</label>
+            <input type="number" class="form-control" required name="client_mobile">
+        </div>
+        <div class="col-md-3 mt-3">
+            <label class="mb-2">Client Email :</label>
+            <input type="email" class="form-control" required name="client_email">
+        </div>
+        <div class="col-md-3 mt-3">
+            <label class="mb-2">Tumbnail:</label>
+            <input type="file" class="form-control" required name="thumb_img">
+        </div>
+
+        <div class="col-md-3 mt-3">
+            <label class="mb-2">Project Image 1*:</label>
+            <input type="file" accept="image/*" class="form-control" required name="image1">
+        </div>
+        <div class="col-md-3 mt-3">
+            <label class="mb-2">Project Image 2*:</label>
+            <input type="file" accept="image/*" class="form-control" required name="image2">
+        </div>
+        <div class="col-md-3 mt-3">
+            <label class="mb-2">Project Image 3:</label>
+            <input type="file" accept="image/*" class="form-control"  name="image3">
+        </div>
+        <div class="col-md-3 mt-3">
+            <label class="mb-2">Project Image 4:</label>
+            <input type="file" accept="image/*" class="form-control"  name="image4">
+        </div>
+           <div class="col-md-12 mt-4">
+            <label class="mb-2">Address:</label>
+            <textarea class="form-control" required name="address"></textarea>
+        </div>
+       
+        <div class="col-md-12 mt-4">
+            <label class="mb-2">About Project :</label>
+            <textarea class="form-control" id="editor1" required name="details"></textarea>
+        </div>
+       <div class="col-md-12 text-center mt-5">
+        <button type="submit" class="btn btn-primary">Save Project</button>
+    </form>
+       </div>
+
+    </div>
+</div>
+<script>
+    var editor = CKEDITOR.replace( 'editor1' );
+
+// The "change" event is fired whenever a change is made in the editor.
+editor.on( 'change', function( evt ) {
+    // getData() returns CKEditor's HTML content.
+  console.log( 'This is what you typed ' + evt.editor.getData() + typeof evt.editor.getData() );
+    console.log( 'Total bytes: ' + evt.editor.getData().length );
+  $('#hiddedn input').val(evt.editor.getData());
+});
+</script>
+<%-include('footer.ejs')%>

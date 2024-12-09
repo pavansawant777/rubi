@@ -1,0 +1,57 @@
+<%-include('header.ejs')%>
+<div class="conatiner pt-5">
+    <div class="row p-4 m-5 rounded shadow bg-light">
+        <div class="col-md-12 text-center mb-5">
+            <h1>Add Member Details</h1>
+        </div>
+        <div class="col-md-4">
+            <form action="/admin/add-member" method="post" enctype="multipart/form-data">
+            <lable class="mb-2">Member Name :</lable>
+            <input type="text" class="form-control" name="name" required>
+        </div>
+        <div class="col-md-4">
+            <lable class="mb-2">Profile Image :</lable>
+            <input type="file" accept="image/*" class="form-control" name="pfp" required>
+        </div>
+        <div class="col-md-4">
+            <lable class="mb-2">Member Designation :</lable>
+            <input type="text" class="form-control" name="designation" required>
+        </div>
+        <div class="col-md-3 mt-4">
+         <label class="mb-2">Instagram Link :</label>
+         <input type="url" class="form-control" name="instagram" required>
+        </div>
+        <div class="col-md-3 mt-4">
+            <label class="mb-2">Whatsapp No. :</label>
+            <input type="number" class="form-control" name="whatsapp" required>
+           </div>
+           <div class="col-md-3 mt-4">
+            <label class="mb-2">Facebook Link :</label>
+            <input type="url" class="form-control" name="facebook" required>
+           </div>
+          
+         
+           <div class="col-md-12 text-center mt-5">
+            <%if(ttl_member<3){%>
+            <button type="submit" class="btn btn-primary">Add Member</button>
+            <%}else{%>
+                <div class="alert alert-danger"><h6 class="text-danger">Your team member limit has reached. You have delete old team member to add new.</h6></div>
+                <%}%>
+        </form>
+           </div>
+    </div>
+</div>
+
+
+<script>
+var editor = CKEDITOR.replace( 'editor3' );
+
+// The "change" event is fired whenever a change is made in the editor.
+editor.on( 'change', function( evt ) {
+    // getData() returns CKEditor's HTML content.
+  console.log( 'This is what you typed ' + evt.editor.getData() + typeof evt.editor.getData() );
+    console.log( 'Total bytes: ' + evt.editor.getData().length );
+  $('#hiddedn input').val(evt.editor.getData());
+});
+</script>
+<%-include('footer.ejs')%>

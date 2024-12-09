@@ -1,0 +1,35 @@
+<%-include('header.ejs')%>
+<style>
+    #card{
+        transition: all 0.5s;
+        cursor: pointer;
+    }
+    #card:hover{
+        color: white;
+      background-color: hsl(0, 0%, 45%);
+      transform: translateY(-10px);
+    }
+</style>
+<div class="container pt-5">
+    <div class="row p-4">
+<%for(let i=0;i<service.length;i++){%>
+      <div class="col-md-4  p-4" >
+        <a href="/admin/view-service/<%-service[i]._id%>"  class="text-dark">
+        <div class="row rounded shadow justify-content-center align-item-center  p-3" id="card">
+            <div class="col-5 text-center">
+                        <img src="<%-service[i].ico%>" style="height:60px;width:60px" />
+
+            </div>
+            <div class="col-md-12 text-center mt-4">
+               <h5 style="text-transform: uppercase;"><b><%-service[i].title%></b></h5>
+              
+            </div>
+        </div>
+    </a>
+      </div>
+      <%}%>
+
+
+    </div>
+</div>
+<%-include('footer.ejs')%>

@@ -1,0 +1,36 @@
+<%-include('header.ejs')%>
+<div class="container pt-5">
+    <div class="row m-5 rounded shadow bg-light p-4">
+        <div class="col-md-12 text-center mb-4">
+            <h1>Add Service Details</h1>
+        </div>
+        <div class="col-md-6">
+            <form action="/admin/add_service" enctype="multipart/form-data" method="post" >
+            <label class="mb-3">
+                Service Title* :
+            </label>
+            
+            <input type="text" class="form-control" required name="title">
+        </div>
+      
+        <div class="col-md-6 ">
+            <label class="mb-3">
+                Service Icon URL* :
+            </label>
+            <input type="text" class="form-control" required name="ico">
+        </div>
+       
+        <!-- <div class="col-md-12 mt-3">
+            <label class="mb-3">
+               Detail:
+             </label>
+            <textarea class="form-control" name="details" required></textarea>
+        </div> -->
+       
+        <div class="col-md-12 mt-5 text-center">
+         <button type="submit" class="btn btn-primary">Save</button>
+        </form>
+        </div>
+    </div>
+</div>
+<%-include('footer.ejs')%>

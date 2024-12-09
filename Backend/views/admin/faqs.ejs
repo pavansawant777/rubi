@@ -1,0 +1,25 @@
+<%-include('header.ejs')%>
+<div class="container">
+    <div class="row p-5">
+        <div class="col-md-12">
+            <h2 class="text-center mb-5">Faq List</h2>
+            <table class="table table-bordered table-striped">
+                <tr>
+                    <th></th>
+                    <th>Srno</th>
+                    <th>Question</th>
+                    <th>Answers</th>
+                </tr>
+                <%for(let i=0;i<faq.length;i++){%>
+                    <tr>
+                        <td><a href="/admin/delete-faq/<%-faq[i]._id%>" class="text-danger"><i class="fa fa-trash"></i></a></td>
+                        <td><%=i+1%></td>
+                    <td><%=faq[i].question%></td>
+                    <td><%=faq[i].answer%></td>
+                    </tr>
+                    <%}%>
+            </table>
+        </div>
+    </div>
+</div>
+<%-include('footer.ejs')%>
